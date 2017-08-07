@@ -16,8 +16,8 @@
     <% @arts.each do |art| %>
       <tr>
         <td><%= art.title %></td>
-        <td><%= art.image %></td>
-        <td><%= art.user %></td>
+        <td><%= image_tag art.image.url(:medium) %></td>
+        <td><%= art.user.username %></td>
         <td><%= link_to 'Show', art %></td>
         <td><%= link_to 'Edit', edit_art_path(art) %></td>
         <td><%= link_to 'Destroy', art, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170803151147) do
+ActiveRecord::Schema.define(version: 20170804150341) do
 
   create_table "arts", force: :cascade do |t|
     t.string "title"
@@ -28,6 +28,20 @@ ActiveRecord::Schema.define(version: 20170803151147) do
     t.string "style"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.string "followable_type", null: false
+    t.integer "followable_id", null: false
+    t.string "follower_type", null: false
+    t.integer "follower_id", null: false
+    t.boolean "blocked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followable_id", "followable_type"], name: "fk_followables"
+    t.index ["followable_type", "followable_id"], name: "index_follows_on_followable_type_and_followable_id"
+    t.index ["follower_id", "follower_type"], name: "fk_follows"
+    t.index ["follower_type", "follower_id"], name: "index_follows_on_follower_type_and_follower_id"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -51,13 +65,13 @@ ActiveRecord::Schema.define(version: 20170803151147) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "user_recipes", force: :cascade do |t|
+  create_table "user_disciplines", force: :cascade do |t|
     t.integer "user_id"
     t.integer "discipline_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["discipline_id"], name: "index_user_recipes_on_discipline_id"
-    t.index ["user_id"], name: "index_user_recipes_on_user_id"
+    t.index ["discipline_id"], name: "index_user_disciplines_on_discipline_id"
+    t.index ["user_id"], name: "index_user_disciplines_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -81,6 +95,10 @@ ActiveRecord::Schema.define(version: 20170803151147) do
     t.string "propic_content_type"
     t.integer "propic_file_size"
     t.datetime "propic_updated_at"
+    t.string "coverpic_file_name"
+    t.string "coverpic_content_type"
+    t.integer "coverpic_file_size"
+    t.datetime "coverpic_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

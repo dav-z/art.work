@@ -37,6 +37,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.text :bio, :limit => 500
       t.boolean :admin, default: false
       t.attachment :propic
+      t.attachment :coverpic
 
 
       t.timestamps null: false

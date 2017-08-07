@@ -1,0 +1,37 @@
+<div class="profilepage">
+  <div class="userprofilediv col-md-offset-2 col-md-8" style="background-image: url('<%= User.find(@user.id).coverpic %>')">
+    <div class="profilepicture col-md-offset-2 col-md-2" style="background-image: url('<%= User.find(@user.id).propic(:medium) %>')"></div>
+
+    <div class="userinfo">
+      <div class="username">@<%= @user.username %>
+        <% if user_signed_in? %>
+          <% unless current_user == @user %>
+            <% if @user.followed_by?(current_user) %>
+              <%= form_tag user_unfollow_path(user_id: @user.id), method: :delete, remote: true do %>
+                <%= button_tag 'Unfollow', class: 'btn btn-primary' %>
+              <% end %>
+            <% else %>
+              <%= form_tag user_follow_path(user_id: @user.id), method: :post, remote: true do %>
+                <%= button_tag 'Follow', class: 'btn btn-success' %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% else %>
+        <% end %>
+      </div>
+      <p><%= @user.full_name %></p>
+    </div>
+  </div>
+
+  <div class="profilerightdiv col-md-offset-2 col-md-8">
+    <% @user.arts.each do |art| %>
+      <div class="artimage" style="background-image: url('<%= art.image %>')">
+        <!-- <%# image_tag art.image.url %> -->
+        <div class="overlay">
+          <div class="text"><%= art.title %></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>

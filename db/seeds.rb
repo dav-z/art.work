@@ -12,8 +12,8 @@ Discipline.create([
 ])
 
 User.create ([
-	{id: 1, fname: "David", lname: "Zheng", location: "Brooklyn", bio: "This is a bio.", admin: true, propic: File.new("#{Rails.root}/app/assets/images/david.jpeg"), password: "password", email: "david@zheng.com", username: "dav"},
-  {id: 2, fname: "Jenn", lname: "Macquade", location: "Brooklyn", bio: "A BIO!", admin: false, propic: File.new("#{Rails.root}/app/assets/images/jenn.jpg"), password: "password", email: "jenn@macquade.com", username: "jenn"}
+	{id: 1, fname: "David", lname: "Zheng", location: "Brooklyn", bio: "This is a bio.", admin: true, propic: File.new("#{Rails.root}/app/assets/images/david.jpeg"), coverpic: File.new("#{Rails.root}/app/assets/images/home4.jpg"), password: "password", email: "david@zheng.com", username: "dav"},
+  {id: 2, fname: "Jenn", lname: "Macquade", location: "Brooklyn", bio: "A BIO!", admin: false, propic: File.new("#{Rails.root}/app/assets/images/jenn.jpg"), propic: File.new("#{Rails.root}/app/assets/images/home2.jpg"), password: "password", email: "jenn@macquade.com", username: "jenn"}
 ])
 
 UserDiscipline.create ([
@@ -33,7 +33,12 @@ Post.create ([
 	])
 
 Art.create ([
-	{id: 1, user_id: 2, title: "Urban Gardener", image: File.new("#{Rails.root}/app/assets/images/dav1.png")}
+	{id: 1, user_id: 1, title: "Urban Gardener", image: File.new("#{Rails.root}/app/assets/images/dav1.png")},
+  {id: 2, user_id: 1, title: "Car", image: File.new("#{Rails.root}/app/assets/images/home1.jpg")},
+  {id: 3, user_id: 1, title: "Rocks", image: File.new("#{Rails.root}/app/assets/images/home2.jpg")},
+  {id: 4, user_id: 1, title: "Steph", image: File.new("#{Rails.root}/app/assets/images/home3.jpg")},
+  {id: 5, user_id: 1, title: "Carnival Truck", image: File.new("#{Rails.root}/app/assets/images/home4.jpg")},
+  {id: 6, user_id: 1, title: "Urban Gardener Logo", image: File.new("#{Rails.root}/app/assets/images/dav2.png")},
 	])
 
 Job.create ([
