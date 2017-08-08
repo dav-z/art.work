@@ -39,5 +39,9 @@ document.addEventListener("turbolinks:load", function(){
     $(window).scroll(function(e) {
       $('.parallax').each(parallax);
     });
+
+
+
+
   });
 });

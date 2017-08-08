@@ -13,7 +13,7 @@ Discipline.create([
 
 User.create ([
 	{id: 1, fname: "David", lname: "Zheng", location: "Brooklyn", bio: "This is a bio.", admin: true, propic: File.new("#{Rails.root}/app/assets/images/david.jpeg"), coverpic: File.new("#{Rails.root}/app/assets/images/home4.jpg"), password: "password", email: "david@zheng.com", username: "dav"},
-  {id: 2, fname: "Jenn", lname: "Macquade", location: "Brooklyn", bio: "A BIO!", admin: false, propic: File.new("#{Rails.root}/app/assets/images/jenn.jpg"), propic: File.new("#{Rails.root}/app/assets/images/home2.jpg"), password: "password", email: "jenn@macquade.com", username: "jenn"}
+  {id: 2, fname: "Jenn", lname: "Macquade", location: "Brooklyn", bio: "A BIO!", admin: false, propic: File.new("#{Rails.root}/app/assets/images/jenn.jpg"), coverpic: File.new("#{Rails.root}/app/assets/images/home2.jpg"), password: "password", email: "jenn@macquade.com", username: "jenn"}
 ])
 
 UserDiscipline.create ([

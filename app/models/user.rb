@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :jobs, dependent: :destroy
   has_attached_file :propic, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/assets/default/:style/default_pic.png"
   validates_attachment_content_type :propic, content_type: /\Aimage\/.*\z/
-  has_attached_file :coverpic, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/assets/default/home3.jpg"
+  has_attached_file :coverpic, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :coverpic, content_type: /\Aimage\/.*\z/
   validates :username, :presence => true, :uniqueness => { :case_sensitive => false }
 def full_name

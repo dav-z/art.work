@@ -1,8 +1,12 @@
 <div class="profilepage">
-  <div class="userprofilediv col-md-offset-2 col-md-8" style="background-image: url('<%= User.find(@user.id).coverpic %>')">
+  <% if @user.coverpic %>
+  <div class="coverphoto col-md-12" style="background-image: url('<%= User.find(@user.id).coverpic %>'); height: 48vh; top: -20vh; position: absolute; z-index: 0; background-size: cover; background-position: center center; background-repeat: no-repeat"></div>
+  <% else %>
+  <% end %>
+  <div class="userprofilediv col-md-offset-2 col-md-8">
     <div class="profilepicture col-md-offset-2 col-md-2" style="background-image: url('<%= User.find(@user.id).propic(:medium) %>')"></div>
 
-    <div class="userinfo">
+    <div class="userinfo col-md-offset-2 col-md-4">
       <div class="username">@<%= @user.username %>
         <% if user_signed_in? %>
           <% unless current_user == @user %>
@@ -20,18 +24,26 @@
         <% end %>
       </div>
       <p><%= @user.full_name %></p>
+      <p><%= @user.location %></p>
+      <p><%= @user.bio %></p>
     </div>
   </div>
 
-  <div class="profilerightdiv col-md-offset-2 col-md-8">
-    <% @user.arts.each do |art| %>
-      <div class="artimage" style="background-image: url('<%= art.image %>')">
-        <!-- <%# image_tag art.image.url %> -->
-        <div class="overlay">
-          <div class="text"><%= art.title %></div>
-        </div>
-      </div>
-    <% end %>
-  </div>
+    <div class="profilerightdiv col-md-offset-2 col-md-8">
+      <% unless @user.arts.blank? %>
+        <% @user.arts.each do |art| %>
+        <a href="<%= art.image.url %>" data-lightbox="artgallery" data-title="<%= art.title %>">
+          <div class="artimage" style="background-image: url('<%= art.image %>')">
+            <!-- <%# image_tag art.image.url %> -->
+            <div class="overlay">
+              <div class="text"><%= art.title %></div>
+            </div>
+          </div>
+        </a>
+        <% end %>
+      <% else %>
+      <p>Sorry, there are no images to show.</p>
+      <% end %>
+    </div>
 
 </div>

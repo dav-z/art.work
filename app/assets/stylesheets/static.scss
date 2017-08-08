@@ -213,7 +213,7 @@ button.danger:hover {
     border: 1px solid black;
     text-align: center;
     margin-top: 2vh;
-    background-size: cover;
+    background-color: white;
     .profilepicture {
       height: 15vh;
       width: 15vh;
@@ -222,6 +222,8 @@ button.danger:hover {
       background-position: center center;
       margin-top: 2.5vh;
     }
+    .userinfo {
+      background-color: rgba(255,255,255,0.3);
       .username {
         font-size: 5vh;
         form {
@@ -229,6 +231,7 @@ button.danger:hover {
         }
       }
     }
+  }
   .profilerightdiv {
     text-align: center;
     padding: .5vw;
@@ -290,4 +293,11 @@ button.danger:hover {
       height: 20%;
     }
   }
+}
+
+// signuppage
+.signuppage {
+  margin: 15vh auto;
+  width: 20%;
+
 }
