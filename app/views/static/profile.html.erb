@@ -24,12 +24,17 @@
         <% end %>
       </div>
       <p><%= @user.full_name %></p>
-      <p><%= @user.location %></p>
+      <% unless @user.location.blank? %>
+        <p><img src="assets/location.png" style="height:15px; vertical-align:top"> <%= @user.location %></p>
+      <% else %>
+      <% end %>
       <p><%= @user.bio %></p>
     </div>
   </div>
 
-    <div class="profilerightdiv col-md-offset-2 col-md-8">
+  <div class="profilebottomdiv">
+    <p>Portfolio | Posts | Jobs</p>
+    <div class="profilegallery">
       <% unless @user.arts.blank? %>
         <% @user.arts.each do |art| %>
         <a href="<%= art.image.url %>" data-lightbox="artgallery" data-title="<%= art.title %>">
@@ -42,8 +47,14 @@
         </a>
         <% end %>
       <% else %>
-      <p>Sorry, there are no images to show.</p>
+      <div class="nomessage">Sorry, there are no images to show.</div>
+      <% end %>
+      <% if current_user == @user %>
+        <a href="/arts/new">
+        <div class="artadd" style="background-image: url('/assets/addcam.png')"></div></a>
+      <% else %>
       <% end %>
     </div>
+  </div>
 
 </div>
