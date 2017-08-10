@@ -12,6 +12,10 @@ class ArtsController < ApplicationController
   def show
   end
 
+  def self.recent( num )
+    self.order( id: :desc ).limit( num )
+  end
+
   # GET /arts/new
   def new
     @art = Art.new
@@ -25,7 +29,7 @@ class ArtsController < ApplicationController
   # POST /arts.json
   def create
     @art = Art.new(art_params)
-
+    @user = current_user
     respond_to do |format|
       if @art.save
         format.html { redirect_to @art, notice: 'Art was successfully created.' }

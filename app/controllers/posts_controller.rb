@@ -17,6 +17,10 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def self.recent( num )
+    self.order( id: :desc ).limit( num )
+  end
+
   # GET /posts/1/edit
   def edit
   end
@@ -25,6 +29,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @user = current_user
 
     respond_to do |format|
       if @post.save

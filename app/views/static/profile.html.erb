@@ -1,13 +1,13 @@
 <div class="profilepage">
-  <% if @user.coverpic %>
-  <div class="coverphoto col-md-12" style="background-image: url('<%= User.find(@user.id).coverpic %>'); height: 48vh; top: -20vh; position: absolute; z-index: 0; background-size: cover; background-position: center center; background-repeat: no-repeat"></div>
+  <% unless @user.coverpic.blank? %>
+    <div class="coverphoto col-md-12" style="background-image: url('<%= User.find(@user.id).coverpic %>'); height: 48vh; top: -20vh; position: absolute; z-index: 0; background-size: cover; background-position: center center; background-repeat: no-repeat"></div>
   <% else %>
   <% end %>
   <div class="userprofilediv col-md-offset-2 col-md-8">
     <div class="profilepicture col-md-offset-2 col-md-2" style="background-image: url('<%= User.find(@user.id).propic(:medium) %>')"></div>
 
     <div class="userinfo col-md-offset-2 col-md-4">
-      <div class="username">@<%= @user.username %>
+      <div class="username"><span>@<%= @user.username %></span>
         <% if user_signed_in? %>
           <% unless current_user == @user %>
             <% if @user.followed_by?(current_user) %>
@@ -19,27 +19,41 @@
                 <%= button_tag 'Follow', class: 'btn btn-success' %>
               <% end %>
             <% end %>
+          <% else %>
+            <a href="/users/edit" style="font-size:1vh;">edit</a>
           <% end %>
         <% else %>
         <% end %>
+        <div class="dlist">
+          <p class="disclist"><%= @user.disciplines.map(&:style).join(' | ') %></p>
+        </div>
       </div>
       <p><%= @user.full_name %></p>
       <% unless @user.location.blank? %>
         <p><img src="assets/location.png" style="height:15px; vertical-align:top"> <%= @user.location %></p>
       <% else %>
       <% end %>
-      <p><%= @user.bio %></p>
+      <% unless @user.bio.blank? %>
+        <p class="bioshow">Show Bio</p>
+        <p class="biotext"><%= @user.bio %></p>
+        <p class="biohide">Hide Bio</p>
+      <% end %>
     </div>
   </div>
 
   <div class="profilebottomdiv">
-    <p>Portfolio | Posts | Jobs</p>
+    <p class="profilebtns"><span class="portfoliobtn">Portfolio</span> | <span class="postbtn">Posts</span> | <span class="jobbtn">Jobs</span></p>
+
     <div class="profilegallery">
       <% unless @user.arts.blank? %>
-        <% @user.arts.each do |art| %>
+        <% if current_user == @user %>
+          <a href="/arts/new">
+          <div class="artadd" style="background-image: url('/assets/addcam.png')"></div></a>
+        <% else %>
+        <% end %>
+        <% @user.arts.order( id: :desc ).each do |art| %>
         <a href="<%= art.image.url %>" data-lightbox="artgallery" data-title="<%= art.title %>">
           <div class="artimage" style="background-image: url('<%= art.image %>')">
-            <!-- <%# image_tag art.image.url %> -->
             <div class="overlay">
               <div class="text"><%= art.title %></div>
             </div>
@@ -48,13 +62,82 @@
         <% end %>
       <% else %>
       <div class="nomessage">Sorry, there are no images to show.</div>
-      <% end %>
-      <% if current_user == @user %>
-        <a href="/arts/new">
-        <div class="artadd" style="background-image: url('/assets/addcam.png')"></div></a>
-      <% else %>
+        <% if current_user == @user %>
+          <a href="/arts/new">
+          <div class="artadd" style="background-image: url('/assets/addcam.png')"></div></a>
+        <% else %>
+        <% end %>
       <% end %>
     </div>
+
+
+    <div class="profilepost">
+      <% unless @user.posts.blank? %>
+        <% if current_user == @user %>
+          <a href="/posts/new">
+            <div class="profpost">
+              <img src="/assets/addcam.png" style="width: 3%">
+              <p>Make a new Post!</p>
+            </div>
+          </a>
+        <% else %>
+        <% end %>
+        <% @user.posts.order( id: :desc ).each do |post| %>
+          <div class="profpost">
+            <a href="<%= post.photo.url %>" data-lightbox="userpost" data-title="<%= post.caption %>">
+              <%= image_tag post.photo.url %>
+            </a>
+            <p><%= post.caption %><p>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="nomessage">Sorry, there are no posts to show.</div>
+        <% if current_user == @user %>
+          <a href="/posts/new">
+            <div class="profpost">
+              <img src="/assets/addcam.png" style="width: 3%">
+              <p>Make a new Post!</p>
+            </div>
+          </a>
+        <% else %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="profilejob">
+      <% unless @user.jobs.blank? %>
+        <% if current_user == @user %>
+          <a href="/jobs/new">
+            <div class="jobpost">
+              <img src="/assets/addbtn.png" style="width: 3%">
+              <p>Add to the job board!</p>
+            </div>
+          </a>
+        <% else %>
+        <% end %>
+          <% @user.jobs.order( id: :desc ).each do |job| %>
+            <a href="/jobs/<%= job.id %>">
+              <div class="jobpost">
+                <h4><%= job.title %><h4>
+                <p><%= job.description %></p>
+              </div>
+            </a>
+          <% end %>
+      <% else %>
+        <div class="nomessage">Sorry, there are no jobs to show.</div>
+        <% if current_user == @user %>
+          <a href="/jobs/new">
+            <div class="jobpost">
+              <img src="/assets/addbtn.png" style="width: 3%">
+              <p>Add to the job board!</p>
+            </div>
+          </a>
+        <% else %>
+        <% end %>
+      <% end %>
+    </div>
+
+
   </div>
 
 </div>

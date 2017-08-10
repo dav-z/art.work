@@ -17,7 +17,13 @@ class User < ApplicationRecord
   has_attached_file :coverpic, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :coverpic, content_type: /\Aimage\/.*\z/
   validates :username, :presence => true, :uniqueness => { :case_sensitive => false }
-def full_name
-  "#{fname} #{lname}".strip
-end
+
+  def full_name
+    "#{fname} #{lname}".strip
+  end
+
+  def following_feed
+    Post.where( user_id: self.all_following.map{|u| u.id} ).order("created_at DESC")
+  end
+
 end

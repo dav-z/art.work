@@ -1,15 +1,16 @@
 class StaticController < ApplicationController
 
   def index
-end
+  end
 
-# link the path to the user profile page
-def profile
-  @user = User.find_by_username(params[:username])
-end
+  # link the path to the user profile page
+  def profile
+    @user = User.find_by_username(params[:username])
 
-def feed
-  @posts = Post.all
-end
+  end
+
+  def home
+    @jobs = Job.all
+  end
 
 end

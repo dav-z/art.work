@@ -1,6 +1,6 @@
 /*@import url(https://fonts.googleapis.com/css?family=Lobster);*/
 
-// home page
+// home page not signed in
 body,
 html {
   width: 100%;
@@ -203,6 +203,79 @@ button.danger:hover {
   bottom: -1.25rem;
 }
 
+// signed in home page
+.loggedhome {
+  margin-top: 15vh;
+  text-align: center;
+  .feed {
+    .feedpost {
+      margin: 0.5vh;
+      background-color: rgba(0,0,0,0.1);
+      padding: 1vh;
+      height: 30vh;
+      /*position: relative;*/
+      .userpic {
+        height: 100%;
+        .propic {
+          height: 7vh;
+          width: 7vh;
+          border-radius: 7vh;
+          background-size: cover;
+          background-position: center center;
+          bottom: 0;
+          left: 0;
+          position: absolute;
+        }
+      }
+      .userpost {
+        background-image: url('/assets/speechbub.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100%;
+        text-align: center;
+        img {
+          max-width: 40%;
+          max-height: 40%;
+          top: 3vh;
+          position: relative;
+          /*padding: 1vh;*/
+        }
+        p {
+          margin-bottom: 0;
+        }
+        .caption {
+          font-size: 2vh;
+          display: block;
+          position: inherit;
+          top: 5vh;
+          width: 50%;
+          height: 30%;
+          max-width: 50%;
+          max-height: 30%;
+          margin: auto;
+          overflow-y: scroll;
+        }
+        .posttime {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+        }
+      }
+    }
+  }
+  .jobboard {
+    .joblisting {
+      margin: 0.5vh;
+      background-color: rgba(0,0,0,0.1);
+      padding: 1vh;
+      padding-top: 1vh;
+      .posttime {
+        text-align: left;
+      }
+    }
+  }
+}
 
 
 /// profile page
@@ -225,8 +298,28 @@ button.danger:hover {
     }
     .userinfo {
       background-color: rgba(255,255,255,0.3);
+      .biotext {
+        height: 10vh;
+        overflow-y: scroll;
+      }
+      .bioshow, .biohide {
+        color: #999;
+      }
+      .bioshow:hover, .biohide:hover {
+        color: #000;
+        cursor: pointer;
+      }
       .username {
         font-size: 5vh;
+        .dlist {
+          overflow-x: scroll;
+          overflow-y: hidden;
+          height: 2vh;
+          white-space: nowrap;
+          .disclist {
+            font-size:1vh;
+          }
+        }
         form {
           display: inline-block;
         }
@@ -237,8 +330,16 @@ button.danger:hover {
     text-align: center;
     width: 64vw;
     margin: auto;
-    p {
+    .profilebtns {
       font-size: 30px;
+      .postbtn, .jobbtn, .portfoliobtn {
+        font-size: 30px;
+        margin-bottom: 2vh;
+      }
+      .postbtn:hover, .jobbtn:hover, .portfoliobtn:hover {
+        cursor: pointer;
+        color: #999;
+      }
     }
     .profilegallery {
       text-align: center;
@@ -308,7 +409,6 @@ button.danger:hover {
         flex: auto;
         width: 20vw;
         margin: .5vw;
-        /*margin: auto;*/
         height: 20vh;
         background-position: center;
         background-size: 40%;
@@ -327,6 +427,52 @@ button.danger:hover {
       }
       .artimage:hover .overlay {
         height: 20%;
+      }
+    }
+    .profilepost {
+      width: 64vw;
+      margin: auto;
+      padding: .5vw;
+      .nomessage {
+        width: 100%;
+        font-size: 15px;
+      }
+      .profpost {
+        width: 100%;
+        background-color: rgba(0,0,0,0.1);
+        padding: .5vh .5vw;
+        margin: .5vh .5vw;
+        img {
+          max-width: 80%;
+          height: auto;
+        }
+        p {
+          font-size: 1.5vh;
+          padding: 0.5vh;
+          margin-bottom: 0;
+        }
+      }
+    }
+    .profilejob {
+      width: 64vw;
+      margin: auto;
+      padding: .5vw;
+      .nomessage {
+        width: 100%;
+        font-size: 15px;
+      }
+      .jobpost {
+        background-color: rgba(0,0,0,0.1);
+        padding: .5vh .5vw;
+        margin: .5vh .5vw;
+        h4 {
+          font-size: 2vh;
+        }
+        p {
+          font-size: 1.3vh;
+          margin-bottom: 0;
+        }
+
       }
     }
   }

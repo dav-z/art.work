@@ -12,6 +12,10 @@ class JobsController < ApplicationController
   def show
   end
 
+  def self.recent( num )
+    self.order( id: :desc ).limit( num )
+  end
+
   # GET /jobs/new
   def new
     @job = Job.new
@@ -25,6 +29,7 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     @job = Job.new(job_params)
+    @user = current_user
 
     respond_to do |format|
       if @job.save

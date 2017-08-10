@@ -1,5 +1,7 @@
 document.addEventListener("turbolinks:load", function(){
   $(document).ready(function() {
+
+    // home page parallax
     var wHeight = $(window).height();
 
     function parallax() {
@@ -41,7 +43,58 @@ document.addEventListener("turbolinks:load", function(){
     });
 
 
+    // profile page
+    $(".profilepost").hide();
+    $(".profilejob").hide();
 
+    $(".portfoliobtn").click(
+      function(){
+        $(".profilepost").hide();
+        $(".profilejob").hide();
+        $(".profilegallery").show();
+      }
+    )
+
+    $(".postbtn").click(
+      function(){
+        $(".profilegallery").hide();
+        $(".profilejob").hide();
+        $(".profilepost").show();
+      }
+    )
+
+    $(".jobbtn").click(
+      function(){
+        $(".profilepost").hide();
+        $(".profilegallery").hide();
+        $(".profilejob").show();
+      }
+    )
+
+    $(".biotext").hide();
+    $(".biohide").hide();
+
+    $(".bioshow").click(
+      function(){
+        $(".biotext").show();
+        $(".bioshow").hide();
+        $(".biohide").show();
+        $(".userprofilediv").animate({
+          height: '30vh'
+        }, 1000);
+      }
+    )
+
+    $(".biohide").click(
+      function(){
+        $(".biotext").hide();
+        $(".bioshow").show();
+        $(".biohide").hide();
+        $(".userprofilediv").animate({
+          height: '20vh'
+        }, 1000);
+      }
+    )
 
   });
 });
