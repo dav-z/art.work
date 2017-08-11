@@ -34,6 +34,14 @@
     </div>
 
     <div class="field">
+      <%= f.label 'Disciplines' %>
+      <% Discipline.all.each do |discipline| %>
+        <%= f.check_box :discipline_ids, {multiple: true}, discipline.id, nil %>
+        <%= f.label discipline.style, class: 'disciplinestyles' %>
+      <% end %>
+    </div>
+
+    <div class="field">
       <%= f.label "Location" %><br />
       <%= f.text_field :location %>
     </div>

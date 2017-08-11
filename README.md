@@ -49,4 +49,8 @@ rails g model user_discipline
 ````
 Paperclip::Attachment.default_options[:use_timestamp] = false
 ````
-* move turbolinks link to bottom of applications page
+* (TO FIX TURBOLINKS PROBLEM) in lightbox.js for the Lightbox.prototype.init add:
+````
+document.addEventListener("turbolinks:load", function() {
+});
+````

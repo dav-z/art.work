@@ -11,10 +11,10 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 // = require lightbox
 //= require_tree .
 //= require bootstrap-sprockets
+//= require turbolinks
 
 
 
