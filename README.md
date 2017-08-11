@@ -1,5 +1,20 @@
 # README
 
+## Features Used
+
+* Running on Ruby 2.4.0
+
+* Using Rails scaffold feature to build database
+
+* Use Devise gem to create user
+
+* Use bcrypt gem to encrypt passwords
+
+* Use Lightbox jQuery plugin for slideshows
+
+* Use bootstrap for site layout
+
+## Building Project Database
 ````
 rails new artwork
 cd artwork
@@ -21,3 +36,17 @@ rails g scaffold discipline style:string
 rails g migration UserDiscipline
 rails g model user_discipline
 ````
+
+## Setting Up lightbox
+
+* installed lightbox.js and lightbox.css
+
+* edit lightbox.css and change to lightbox.css.scss.erb
+
+* change the image paths using Ruby
+
+* to get rid of cache data on the image links in paperclip, add file -> config/initializers/paperclip.rb and add code:
+````
+Paperclip::Attachment.default_options[:use_timestamp] = false
+````
+* move turbolinks link to bottom of applications page

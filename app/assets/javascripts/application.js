@@ -12,14 +12,15 @@
 //
 //= require rails-ujs
 //= require turbolinks
+// = require lightbox
 //= require_tree .
 //= require bootstrap-sprockets
-// = require lightbox
 
 
 
 $(document).ready(function() {
   document.addEventListener("turbolinks:load", function() {
+
     /**
      * This object controls the nav bar. Implement the add and remove
      * action over the elements of the nav bar that we want to change.
@@ -95,28 +96,19 @@ $(document).ready(function() {
      */
     offSetManager();
 
-    // $('.profilerightdiv').empty().justifiedImages({
-    //   images: arts,
-    //   rowHeight: 200,
-    //   maxRowHeight: 400,
-    //   thumbnailPath: function(photo, width, height) {
-    //     var purl = photo.url_s;
-    //     if (photo.url_n && (width > photo.width_s * 1.2 || height > photo.height_s * 1.2)) purl = photo.url_n;
-    //     if (photo.url_m && (width > photo.width_n * 1.2 || height > photo.height_n * 1.2)) purl = photo.url_m;
-    //     if (photo.url_z && (width > photo.width_m * 1.2 || height > photo.height_m * 1.2)) purl = photo.url_z;
-    //     if (photo.url_l && (width > photo.width_z * 1.2 || height > photo.height_z * 1.2)) purl = photo.url_l;
-    //     return purl;
-    //   },
-    //   getSize: function(photo) {
-    //     return {
-    //       width: photo.width_s,
-    //       height: photo.height_s
-    //     };
-    //   },
-    //   margin: 1
-    // });
-    // $(".profilerightdiv").justifiedGallery();
-
-
+    document.getElementById('signInModal').style.display = "none";
   });
+
 });
+
+function signInModalShow(event) {
+  event.preventDefault();
+  document.getElementById('signInModal').style.display = "block";
+  $('#signInForm').css("margin", "auto");
+  $('#signInForm').css("width", "auto");
+  document.getElementById('signInForm').style.display = "block";
+};
+
+function closeModal() {
+  document.getElementById('signInModal').style.display = "none";
+};
