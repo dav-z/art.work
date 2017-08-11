@@ -1,5 +1,7 @@
 class ArtsController < ApplicationController
   before_action :set_art, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :authorize_admin, only: :index
 
   # GET /arts
   # GET /arts.json
@@ -23,6 +25,11 @@ class ArtsController < ApplicationController
 
   # GET /arts/1/edit
   def edit
+    unless @art.user.id == current_user.id
+      flash[:notice] = "You don't have access to this page!"
+      redirect_to profile_path(@art.user.username)
+      return
+    end
   end
 
   # POST /arts
@@ -44,6 +51,11 @@ class ArtsController < ApplicationController
   # PATCH/PUT /arts/1
   # PATCH/PUT /arts/1.json
   def update
+    unless @art.user.id == current_user.id
+      flash[:notice] = "You don't have access to this page!"
+      redirect_to profile_path(@art.user.username)
+      return
+    end
     respond_to do |format|
       if @art.update(art_params)
         format.html { redirect_to @art, notice: 'Art was successfully updated.' }
@@ -58,6 +70,11 @@ class ArtsController < ApplicationController
   # DELETE /arts/1
   # DELETE /arts/1.json
   def destroy
+    unless @art.user.id == current_user.id
+      flash[:notice] = "You don't have access to this page!"
+      redirect_to profile_path(@art.user.username)
+      return
+    end
     @art.destroy
     respond_to do |format|
       format.html { redirect_to arts_url, notice: 'Art was successfully destroyed.' }

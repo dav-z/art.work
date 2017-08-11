@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :authorize_admin, only: :index
 
   # GET /posts
   # GET /posts.json
@@ -23,6 +25,11 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    unless @post.user.id == current_user.id
+      flash[:notice] = "You don't have access to this page!"
+      redirect_to profile_path(@post.user.username)
+      return
+    end
   end
 
   # POST /posts
@@ -45,6 +52,11 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    unless @post.user.id == current_user.id
+      flash[:notice] = "You don't have access to this page!"
+      redirect_to profile_path(@post.user.username)
+      return
+    end
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
@@ -59,6 +71,11 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+    unless @post.user.id == current_user.id
+      flash[:notice] = "You don't have access to this page!"
+      redirect_to profile_path(@post.user.username)
+      return
+    end
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }

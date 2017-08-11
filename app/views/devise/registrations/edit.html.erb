@@ -1,12 +1,11 @@
 <div id="signUpForm">
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <h1>Edit <%= resource_name.to_s.humanize %></h1>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= devise_error_messages! %>
 
     <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
+      <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -14,69 +13,61 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :username %><br />
-      <%= f.text_field :username %>
+      <%= f.text_field :username, placeholder: "Username" %>
     </div>
 
     <div class="field">
-      <%= f.label "First Name" %><br />
-      <%= f.text_field :fname %>
+      <%= f.text_field :fname, placeholder: "First Name" %>
     </div>
 
     <div class="field">
-      <%= f.label "Last Name" %><br />
-      <%= f.text_field :lname %>
+      <%= f.text_field :lname, placeholder: "Last Name" %>
     </div>
 
-    <div class="field">
-      <%= f.label "Bio" %><br />
-      <%= f.text_field :bio %>
-    </div>
-
-    <div class="field">
-      <%= f.label 'Disciplines' %>
+    <div class="discfield">
+      <h3>Disciplines:</h3>
       <% Discipline.all.each do |discipline| %>
         <%= f.check_box :discipline_ids, {multiple: true}, discipline.id, nil %>
-        <%= f.label discipline.style, class: 'disciplinestyles' %>
+        <%= f.label discipline.style, class: 'disciplinestyles' %><br>
       <% end %>
     </div>
 
     <div class="field">
-      <%= f.label "Location" %><br />
-      <%= f.text_field :location %>
+      <%= f.text_field :location, placeholder: "Location" %>
     </div>
 
-    <span id="formProPic">
+    <div class="picchange">
+      <span id="formProPic">
+        <div class="field">
+          <%= f.label "Upload Profile Picture:" %><br />
+          <%= f.file_field :propic %>
+        </div>
+      </span>
+
+      <span id="formCoverPic">
+        <div class="field">
+          <%= f.label "Upload Cover Photo:" %><br />
+          <%= f.file_field :coverpic %>
+        </div>
+      </span>
+
       <div class="field">
-        <%= f.label "Upload Profile Picture:" %><br />
-        <%= f.file_field :propic %>
+        <%= f.text_area :bio, placeholder: "Bio", class: "biobox"%>
       </div>
-    </span>
 
-    <span id="formCoverPic">
-      <div class="field">
-        <%= f.label "Upload Cover Photo:" %><br />
-        <%= f.file_field :coverpic %>
-      </div>
-    </span>
+    </div>
 
-    <div class="field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
-      <% end %>
+    <div class="field changepass">
+      <%= f.password_field :password, autocomplete: "off", placeholder: "Change Password" %>
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password Change" %><br>
+      <em><%= @minimum_password_length %> characters minimum</em>
     </div>
 
-    <div class="field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "off" %>
+    <div class="field currentpass">
+      <%= f.password_field :current_password, autocomplete: "off", placeholder: "Current Password" %>
     </div>
 
     <div class="actions">
@@ -84,9 +75,7 @@
     </div>
   <% end %>
 
-  <h3>Cancel my account</h3>
+  <h3 class="cancelacc">Cancel my account</h3>
 
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-  <%= link_to "Back", :back %>
+  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
 </div>

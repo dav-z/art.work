@@ -1,0 +1,2 @@
+$("#follow-button").addClass("btn-success").removeClass("btn-primary");
+$("#follow-button").parents("form").attr("action","<%= user_follow_path(user_id: @user.id) %>").find("[name=_method]").remove();

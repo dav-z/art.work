@@ -96,5 +96,16 @@ document.addEventListener("turbolinks:load", function(){
       }
     )
 
+    // $(document).ready(function(){
+    //   $(document).on("ajax:complete", function(e){
+    //     console.log(e)
+    //     $(e.currentTarget).addClass("btn-success").removeClass("btn-primary");
+    //   });
+    //   $(".btn-success").on("ajax:complete", function(e){
+    //     console.log(e)
+    //     $(e.currentTarget).addClass("btn-primary").removeClass("btn-success");
+    //   });
+    // })
+
   });
 });

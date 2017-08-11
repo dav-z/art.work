@@ -225,6 +225,7 @@ button.danger:hover {
           bottom: 0;
           left: 0;
           position: absolute;
+          z-index: 1000;
         }
       }
       .userpost {
@@ -298,12 +299,18 @@ button.danger:hover {
     }
     .userinfo {
       background-color: rgba(255,255,255,0.3);
+      height: 100%;
+      overflow-y: scroll;
       .biotext {
         height: 10vh;
         overflow-y: scroll;
       }
       .bioshow, .biohide {
         color: #999;
+        bottom: 0;
+        left: 42.5%;
+        margin: auto;
+        position: absolute;
       }
       .bioshow:hover, .biohide:hover {
         color: #000;
@@ -322,6 +329,21 @@ button.danger:hover {
         }
         form {
           display: inline-block;
+          .btn {
+            width: 5vw;
+          }
+          .btn-primary:after {
+            content: "Following"
+          }
+          .btn-primary:hover {
+            background-color: crimson;
+          }
+          .btn-primary:hover:after {
+            content: "Unfollow";
+          }
+          .btn-success:after {
+            content: "Follow";
+          }
         }
       }
     }
@@ -470,6 +492,7 @@ button.danger:hover {
         }
         p {
           font-size: 1.3vh;
+          font-family: 'Raleway', sans-serif;
           margin-bottom: 0;
         }
 
@@ -480,6 +503,108 @@ button.danger:hover {
 
 // signuppage
 #signUpForm, #signInForm, #editpass {
-  margin: 15vh auto;
+  margin: 20vh auto;
   width: 20%;
+  text-align: center;
+  input {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+  }
+  label {
+    font-family: 'Josefin Slab', serif;
+  }
+  #user_remember_me {
+    width: auto;
+  }
+  input[type="checkbox"] {
+    width: auto;
+  }
+  .cancelacc {
+    margin-top: 10vh;
+  }
+  .discfield {
+    position: fixed;
+    left: 15vw;
+    top: 20vh;
+    border: 1px solid black;
+    padding: 5vh 5vw;
+    width: 20vw;
+    .disciplinestyles {
+      font-family: 'Raleway', sans-serif;
+    }
+  }
+  .picchange {
+    position: fixed;
+    right: 15vw;
+    top: 20vh;
+    border: 1px solid black;
+    padding: 2vh 2vw;
+    width: 20vw;
+  }
+  .biobox {
+    resize: none;
+    width: 80%;
+    margin-top: 2vh;
+  }
+  .currentpass,.changepass {
+    margin-top: 5vh;
+  }
+}
+
+
+// following page
+.followingpage {
+  margin-top: 15vh;
+  .followinglist {
+    h1 {
+      text-align: center;
+    }
+    .followingperson {
+      height: 15vh;
+      background-color: rgba(0,0,0,0.1);
+      margin: 1vh;
+      img {
+        height: 10vh;
+        width: 10vh;
+        border-radius: 10vh;
+        background-size: cover;
+        background-position: center center;
+        /*margin-top: 2.5vh;*/
+        margin: 2.5vh 0vw 2.5vh 10%;
+        display: inline-block;
+        /*position: absolute;*/
+      }
+      .username {
+        font-family: 'Josefin Slab', serif;
+        font-size: 5vh;
+        vertical-align: bottom;
+        margin: 1vh 20% 2vh 0vw;
+        display: inline-block;
+        /*position: absolute;*/
+      }
+      form {
+        display: inline-block;
+        /*position: absolute;*/
+        margin: 1vh 2% 1vh 10%;
+        .btn {
+          height: 5vh;
+          width: 5vw;
+        }
+        .btn-primary:after {
+          content: "Following"
+        }
+        .btn-primary:hover {
+          background-color: crimson;
+        }
+        .btn-primary:hover:after {
+          content: "Unfollow";
+        }
+        .btn-success:after {
+          content: "Follow";
+        }
+      }
+    }
+  }
 }

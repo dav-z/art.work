@@ -1,0 +1,2 @@
+$("#follow-button").addClass("btn-primary").removeClass("btn-success");
+$("#follow-button").parents("form").attr("action","<%= user_unfollow_path(user_id: @user.id) %>").append(`<input type="hidden" name="_method" value="delete">`);
