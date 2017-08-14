@@ -97,6 +97,8 @@ $(document).ready(function() {
     offSetManager();
 
     document.getElementById('signInModal').style.display = "none";
+    document.getElementById('contactModal').style.display = "none";
+    $('.lightbox').hide();
   });
 
 });
@@ -109,6 +111,12 @@ function signInModalShow(event) {
   document.getElementById('signInForm').style.display = "block";
 };
 
+function contactModalShow(event) {
+  event.preventDefault();
+  document.getElementById('contactModal').style.display = "block";
+};
+
 function closeModal() {
   document.getElementById('signInModal').style.display = "none";
+  document.getElementById('contactModal').style.display = "none";
 };

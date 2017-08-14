@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
-  before_action :authenticate_user!, :except => [:home, :profile]
+  before_action :authenticate_user!, :except => [:home, :profile, :explore]
 
   def index
   end
@@ -14,6 +14,10 @@ class StaticController < ApplicationController
   end
 
   def following
+  end
+
+  def explore
+    @arts = Art.all
   end
 
 end

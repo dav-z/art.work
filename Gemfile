@@ -40,6 +40,10 @@ gem 'httparty'
 # use acts as follower to use following functionality on users
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower'
 
+gem 'mail_form'
+
+gem 'simple_form'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -11,14 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :art_title %>
-  </div>
 
+  <span id="formPostPic">
+    <div class="field">
+      <%= form.label "Upload Pciture:" %><br />
+      <%= form.file_field :image %>
+    </div>
+  </span>
+  
   <div class="field">
-    <%= form.label :image %>
-    <%= form.text_field :image, id: :art_image %>
+    <%= form.text_field :title, id: :art_title, placeholder: "Title" %>
   </div>
 
   <div class="field">

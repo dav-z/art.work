@@ -18,6 +18,10 @@ class JobsController < ApplicationController
     self.order( id: :desc ).limit( num )
   end
 
+  def self.recent( num )
+    self.order( id: :desc ).limit( num )
+  end
+
   # GET /jobs/new
   def new
     @job = Job.new

@@ -1,0 +1,14 @@
+<div class="explorepage">
+  <h1>Explore</h1>
+  <div class="explorefeed">
+    <% @arts.order('RANDOM()').limit(20).each do |random| %>
+      <a href="<%= random.image.url %>" data-lightbox="explorefeed" data-title="<a href='/arts/<%= random.id %>'><%= random.title %></a> by @<a href='/<%= random.user.username %>'><%= random.user.username %></a>">
+        <div class="feedpost" style="background-image: url('<%= random.image.url %>')">
+          <div class="overlay">
+            <div class="text"><%= random.title %></div>
+          </div>
+        </div>
+      </a>
+    <% end %>
+  </div>
+</div>

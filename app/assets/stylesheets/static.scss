@@ -39,10 +39,11 @@ body {
   font-size: 4em;
   text-shadow: 1px 1px 2px black;
   margin-bottom: 15px;
+  font-family: 'Josefin Slab', serif;
 }
 
 .parallax p {
-  font-family: arial, sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 1em;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -83,12 +84,13 @@ body {
 }
 
 .spacer h3 {
-  font-family: lobster, sans-serif;
-  font-size: 2em;
+  font-family: 'Josefin Slab', serif;
+  font-size: 3em;
   margin-bottom: 15px;
 }
 
 .spacer p {
+  font-family: 'Raleway', sans-serif;
   font-size: 15px;
   line-height: 22px;
   margin-bottom: 15px;
@@ -388,7 +390,6 @@ button.danger:hover {
         flex: auto;
         width: 20vw;
         margin: .5vw;
-        /*margin: auto;*/
         height: 20vh;
         background-position: center;
         background-size: 130%;
@@ -397,10 +398,6 @@ button.danger:hover {
         -webkit-transition:all 0.5s ;
         -o-transition:all 0.5s ;
         -moz-transition:all 0.5s ;
-        img {
-          width: 100%;
-          height: auto;
-        }
         .overlay {
           position: absolute;
           bottom: 0;
@@ -558,39 +555,38 @@ button.danger:hover {
 .followingpage {
   margin-top: 15vh;
   .followinglist {
+    text-align: center;
     h1 {
       text-align: center;
     }
     .followingperson {
-      height: 15vh;
+      display: inline-block;
+      height: 35vh;
+      width: 30%;
       background-color: rgba(0,0,0,0.1);
       margin: 1vh;
-      img {
-        height: 10vh;
-        width: 10vh;
-        border-radius: 10vh;
+      overflow: hidden;
+      text-align: center;
+      .profpic {
+        height: 25vh;
+        width: 17vw;
         background-size: cover;
         background-position: center center;
-        /*margin-top: 2.5vh;*/
-        margin: 2.5vh 0vw 2.5vh 10%;
-        display: inline-block;
-        /*position: absolute;*/
+        margin: 2vh auto;
+        /*position: relative;*/
       }
       .username {
         font-family: 'Josefin Slab', serif;
-        font-size: 5vh;
+        font-size: 3vh;
         vertical-align: bottom;
-        margin: 1vh 20% 2vh 0vw;
         display: inline-block;
-        /*position: absolute;*/
       }
       form {
         display: inline-block;
-        /*position: absolute;*/
-        margin: 1vh 2% 1vh 10%;
         .btn {
-          height: 5vh;
+          height: 4vh;
           width: 5vw;
+          font-size: 1.5vh;
         }
         .btn-primary:after {
           content: "Following"
@@ -604,6 +600,69 @@ button.danger:hover {
         .btn-success:after {
           content: "Follow";
         }
+      }
+    }
+  }
+}
+
+// explore page
+
+.explorepage {
+  margin-top: 15vh;
+  h1 {
+    text-align: center;
+  }
+  .explorefeed {
+    padding: 0px;
+    margin: 0px;
+    line-height: 0;
+    font-size: 0;
+    a {
+      line-height: 0;
+      .feedpost {
+        padding: 0px;
+        margin: 0px;
+        width: 25vw;
+        height: 25vh;
+        display: inline-block;
+        background-size: 130%;
+        background-position: center center;
+        background-repeat: no-repeat;
+        position: relative;
+        line-height: 0;
+        transition:all 0.5s ;
+        -webkit-transition:all 0.5s ;
+        -o-transition:all 0.5s ;
+        -moz-transition:all 0.5s ;
+        .overlay {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.4));
+          overflow: hidden;
+          width: 100%;
+          height: 0;
+          transition: .5s ease;
+          .text {
+            white-space: nowrap;
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            overflow: hidden;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            line-height: 20px;
+          }
+        }
+      }
+      .feedpost:hover {
+        background-size: 100%;
+      }
+      .feedpost:hover .overlay {
+        height: 20%;
       }
     }
   }

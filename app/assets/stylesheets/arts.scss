@@ -1,3 +1,23 @@
-// Place all the styles related to the arts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.artpage {
+  margin-top: 10vh;
+  text-align: center;
+  form {
+    margin: auto;
+    div {
+      label {
+        width: 80%;
+        margin: auto;
+      }
+      input {
+        width: 80%;
+        margin: auto;
+      }
+    }
+  }
+  .showart {
+    margin: 2vh;
+    img {
+      width: 80%;
+    }
+  }
+}

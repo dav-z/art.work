@@ -1,19 +1,14 @@
-<p id="notice"><%= notice %></p>
+<div class="jobpage col-md-offset-4 col-md-4">
+    <h1><%= @job.title %></h1>
+    <p>
+      @<%= @job.user.username %>
+    </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @job.user %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @job.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @job.description %>
-</p>
-
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', jobs_path %>
+  <p>
+    <%= @job.description %>
+  </p>
+  <% if current_user == @job.user %>
+    <%= link_to 'Edit', edit_job_path(@job) %>
+  <% else %>
+  <% end %>
+</div>

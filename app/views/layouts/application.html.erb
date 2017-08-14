@@ -30,12 +30,14 @@
                         <% if user_signed_in? %>
                           <li><a href="/<%= current_user.username %>">Profile</a></li>
                           <li><a href="/following">Following</a></li>
-                          <li><a href="#contact">Contact</a></li>
+                          <li><a href="#" onclick="contactModalShow(event)">Contact</a></li>
+                          <li><a href="/explore">Explore</a></li>
                           <li class="signinup"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
                         <% else %>
                           <li><a href="#" onclick="signInModalShow(event)">Profile</a></li>
                           <li><a href="#" onclick="signInModalShow(event)">Following</a></li>
-                          <li><a href="#contact">Contact</a></li>
+                          <li><a href="#" onclick="contactModalShow(event)">Contact</a></li>
+                          <li><a href="/explore">Explore</a></li>
                           <li class="signinup"><a href="#" onclick="signInModalShow(event)">Sign In</a></li>
                         <% end %>
                     </ul>
@@ -48,6 +50,22 @@
           <br>
           <button type="button" name="button" onclick="closeModal()">Close</button><br /><br />
         </div>
+
+        <div class="contactModal" id="contactModal">
+        	<h3 class="contacttitle">Contact Us!</h3>
+          <%= simple_form_for :contact, url: contact_path, method: :post do |f| %>
+              <%= f.input :name, :required => true, placeholder: "Name", label: false %>
+              <%= f.input :email, :required => true, placeholder: "Email", label: false  %>
+              <%= f.input :title, :as => :text, :required => true, placeholder: "Subject", label: false %>
+              <%= f.input :message, :as => :text, :required => true, placeholder: "Message", label: false %>
+              <div>
+                <%= f.button :submit, 'Send message', :class => "btn" %>
+              </div>
+            <% end %>
+            <br>
+          <button type="button" name="button" onclick="closeModal()">Close</button>
+        </div>
+
   <div class="yielddiv">
     <%= yield %>
   </div>

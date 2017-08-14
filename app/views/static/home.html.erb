@@ -14,7 +14,7 @@
   <div class="spacer">
     <div class="container">
       <h3>A community of artists helping each other</h3>
-      <p>Mauris condimentum porttitor massa molestie elementum. Proin rhoncus, arcu sit amet molestie dignissim, sapien risus mattis arcu, et fringilla ipsum purus vitae neque. Phasellus ultricies dolor libero, at efficitur nulla tincidunt eget. Donec eget mauris nec libero vestibulum porta. Aenean sit amet turpis vehicula, vestibulum nunc sed, dapibus ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lobortis tincidunt iaculis. Aenean et odio eros. Aenean fermentum mi ac maximus sollicitudin. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam posuere, est id varius posuere, dolor nisi interdum ante, eget consequat ante mi non ex. Mauris bibendum ac diam vitae efficitur.</p>
+      <p>ART.work is a community of freelance artistst from many backgrounds and disciplines. Our goal is to connect like-minded artists with each other as well as with freelance job opportunities. Make an account! Check out the explore feed! Search some job postings!</p>
     </div>
   </div>
 
@@ -25,7 +25,6 @@
   <div class="parallax secondpic" data-parallax-speed="0.75">
     <div class="parallax-content">
       <h1>Share Your Art</h1>
-      <p>This is parallax element two.</p>
     </div>
   </div>
 
@@ -37,7 +36,7 @@
   <div class="spacer tallSpacer">
     <div class="container">
       <h3>A place to show off your work</h3>
-      <p>Mauris condimentum porttitor massa molestie elementum. Proin rhoncus, arcu sit amet molestie dignissim, sapien risus mattis arcu, et fringilla ipsum purus vitae neque. Phasellus ultricies dolor libero, at efficitur nulla tincidunt eget. Donec eget mauris nec libero vestibulum porta. Aenean sit amet turpis vehicula, vestibulum nunc sed, dapibus ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lobortis tincidunt iaculis. Aenean et odio eros. Aenean fermentum mi ac maximus sollicitudin. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam posuere, est id varius posuere, dolor nisi interdum ante, eget consequat ante mi non ex. Mauris bibendum ac diam vitae efficitur.</p>
+      <p>Upload your artwork and showcase your recent works. Edit your portfolio. Make frequent posts to share your current works and progress. Check out other artist pages and view their portfolio and posts as well!</p>
     </div>
   </div>
 
@@ -48,7 +47,6 @@
   <div class="parallax thirdpic" data-parallax-speed="0.25">
     <div class="parallax-content">
       <h1>Share Some Work</h1>
-      <p>This is parallax element three</p>
     </div>
   </div>
 
@@ -60,7 +58,7 @@
   <div class="spacer">
     <div class="container">
       <h3>A community job thread</h3>
-      <p>Mauris condimentum porttitor massa molestie elementum. Proin rhoncus, arcu sit amet molestie dignissim, sapien risus mattis arcu, et fringilla ipsum purus vitae neque. Phasellus ultricies dolor libero, at efficitur nulla tincidunt eget. Donec eget mauris nec libero vestibulum porta. Aenean sit amet turpis vehicula, vestibulum nunc sed, dapibus ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lobortis tincidunt iaculis. Aenean et odio eros. Aenean fermentum mi ac maximus sollicitudin. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam posuere, est id varius posuere, dolor nisi interdum ante, eget consequat ante mi non ex. Mauris bibendum ac diam vitae efficitur.</p>
+      <p>Search the job thread. Look for jobs that would be best fit for your experience and skill set. Post some freelance work that other's might be interested in! Help your community grow!</p>
     </div>
   </div>
 
@@ -71,7 +69,6 @@
   <div class="parallax fourthpic" data-parallax-speed="0.5">
     <div class="parallax-content fourththing">
       <h1>Join Today</h1>
-      <p>This is the last parallax element</p>
       <button class="danger" onclick="signInModalShow(event)">Sign In &raquo;</button>
       <a href="/users/sign_up"><button class="danger">Sign Up &raquo;</button></a>
     </div>
@@ -98,7 +95,7 @@
     </div>
     <div class="jobboard col-md-offset-1 col-md-3">
       <h1>Job Board</h1>
-      <% @jobs.each do |job| %>
+      <% @jobs.order( id: :desc ).each do |job| %>
         <div class="joblisting col-md-12">
           <p class="posttime"><%= job.created_at.strftime('%b %d, %Y  %I:%M%p') %></p>
           <h4><a href="/jobs/<%= job.id %>"><%= job.title %></a></h4>

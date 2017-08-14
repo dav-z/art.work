@@ -1,19 +1,13 @@
-<p id="notice"><%= notice %></p>
+<div class="artpage col-md-offset-3 col-md-6">
 
-<p>
-  <strong>Title:</strong>
-  <%= @art.title %>
-</p>
+  <div class="showart">
+    <h1><%= @art.title %></h1>
+    <h3><a href="/<%= @art.user.username %>">@<%= @art.user.username %></a></h3>
+    <a href="<%= @art.image.url %>" data-lightbox="<%= @art.title %>"><%= image_tag @art.image.url %></a>
+  </div>
 
-<p>
-  <strong>Image:</strong>
-  <%= @art.image %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @art.user %>
-</p>
-
-<%= link_to 'Edit', edit_art_path(@art) %> |
-<%= link_to 'Back', arts_path %>
+  <% if current_user == @art.user %>
+    <%= link_to 'Edit', edit_art_path(@art) %>
+  <% else %>
+  <% end %>
+</div>

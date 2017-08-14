@@ -70,13 +70,15 @@ nav {
 .navbar-container {
   padding: 20px 0;
   overflow: hidden;
-  // .navbar {
-  //   ul {
-  //     li {
-  //
-  //     }
-  //   }
-  // }
+  #navbar {
+    ul {
+      li {
+        a:hover {
+          background-color: rgba( 192,192,192,0.8);
+        }
+      }
+    }
+  }
 }
 
 .navbar.navbar-fixed-top {
@@ -128,7 +130,7 @@ nav {
   -webkit-transition: 0.9s;
 }
 .signinup {
-  margin-left: 20vw;
+  margin-left: 17vw;
 }
 
 a {
@@ -201,7 +203,7 @@ a:hover {
 
 
 // sign in sign up modal
-div#signInModal {
+div#signInModal, div#contactModal {
     // display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 99999; /* Sit on top */
@@ -215,4 +217,18 @@ div#signInModal {
     margin-top: 20vh;
     // overflow-y: scroll;
     border: 1px solid black;
+    .simple_form {
+      width: 80%;
+      margin: auto;
+      input {
+        width: 100%;
+      }
+      textarea {
+        width: 100%;
+        resize: none;
+      }
+      .btn:hover {
+        background-color: #fff;
+      }
+    }
 }
