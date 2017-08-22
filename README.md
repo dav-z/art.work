@@ -1,4 +1,6 @@
-# README
+# ART.work
+
+A community of artists helping out other artists. Share some artwork, and browse the job search feed.
 
 ## Features Used
 
@@ -13,6 +15,10 @@
 * Use Lightbox jQuery plugin for slideshows
 
 * Use bootstrap for site layout
+
+* Use JavaScript for parallax scrolling and navbar
+
+* Use Photoshop for icon design
 
 ## Building Project Database
 ````

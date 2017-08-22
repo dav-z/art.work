@@ -36,6 +36,7 @@ gem "devise"
 # Use paperclip to attach photos
 gem "paperclip", "~> 5.0.0"
 # Use httparty gem to query web services and examine the resulting output
+gem 'aws-sdk', '~> 2.3'
 gem 'httparty'
 # use acts as follower to use following functionality on users
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower'
