@@ -53,22 +53,22 @@ body {
 }
 
 .firstpic {
-  background: url('/assets/home1.jpg') no-repeat center center;
+  background: url('https://s3.us-east-2.amazonaws.com/art.work/home1.jpg') no-repeat center center;
   height: 90vh;
 }
 
 .secondpic {
-  background: url('/assets/home2.jpg') no-repeat center center;
+  background: url('https://s3.us-east-2.amazonaws.com/art.work/home2.jpg') no-repeat center center;
   height: 80vh;
 }
 
 .thirdpic {
-  background: url('/assets/home3.jpg') no-repeat center center;
+  background: url('https://s3.us-east-2.amazonaws.com/art.work/home3.jpg') no-repeat center center;
   height: 90vh;
 }
 
 .fourthpic {
-  background: url('/assets/home4.jpg') no-repeat center center;
+  background: url('https://s3.us-east-2.amazonaws.com/art.work/home4.jpg') no-repeat center center;
   height: 98vh;
 }
 
@@ -231,7 +231,7 @@ button.danger:hover {
         }
       }
       .userpost {
-        background-image: url('/assets/speechbub.png');
+        background-image: url('https://s3.us-east-2.amazonaws.com/art.work/speechbub.png');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
